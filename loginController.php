@@ -149,9 +149,13 @@ if ($_POST['type'] === 'register') {
 
 
     }
-    if ($_POST['password']!= $_POST['password_confirm'])
+    if(trim($_POST['pass'])=='' || trim($_POST['pass2'])=='')
     {
-        echo("Oops! Password did not match! Try again. ");
+        echo('All fields are required!');
+    }
+    else if($_POST['pass'] != $_POST['pass2'])
+    {
+        echo('Passwords do not match!');
     }
 
     $username = $_POST['username'];
