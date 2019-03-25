@@ -149,6 +149,10 @@ if ($_POST['type'] === 'register') {
 
 
     }
+    if ($_POST['password']!= $_POST['password_confirm'])
+    {
+        echo("Oops! Password did not match! Try again. ");
+    }
 
     $username = $_POST['username'];
     $email = $_POST['email'];
