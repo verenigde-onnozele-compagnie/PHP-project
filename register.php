@@ -1,4 +1,14 @@
-<?php require 'header.php'; ?>
+<?php require 'header.php';
+
+function validpassword($password)
+{
+    if (strlen($password) >= 8) {
+        if (!ctype_upper($password) && !ctype_lower($password)) {
+            return TRUE;
+        }
+    }
+}
+?>
 
 <form action="loginController.php" method="post">
     <input type="hidden" name="type" value="register">
@@ -15,6 +25,11 @@
     <div class="form-group">
         <label for="password">password</label>
         <input type="password" name="password" id="password">
+        <?php
+            if (!preg_match('/^(?=[a-z])(?=[A-Z])[a-zA-Z]{8,}$/', $password))
+                {
+                    echo 'Password must be at least 8 characters long, must have at least 1 uppercase and lowercase letter and must have a special character.';
+                } ?>
     </div>
 
     <div class="form-group">

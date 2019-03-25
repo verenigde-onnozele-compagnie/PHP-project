@@ -81,6 +81,11 @@ nav a {
     margin-bottom: 10%;
 }
 
+.download h2 {
+    display: flex;
+    justify-content: center;
+}
+
 .download a:hover {
     transition: 2s;
     box-shadow: none;

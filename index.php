@@ -29,7 +29,14 @@
         <img src="images/promoimage2.PNG" alt="Promotion image 2">
     </div>
     <div class="download">
-        <a href="downloads/gokkers.exe">Download</a>
+        <?php
+            if ($_SESSION == true){
+                ?><a href="downloads/gokkers.exe">Download</a><?php
+            }
+            else {
+                ?><h2>Log-in to download!</h2><?php
+            }
+        ?>
     </div>
 </body>
 </html>
