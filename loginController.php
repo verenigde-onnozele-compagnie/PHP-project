@@ -24,6 +24,59 @@ if ( $_POST['type'] === 'login' ) {
      * wachtwoord niet in orde is.
      *
      */
+    try {
+        $conn= new PDO("mysql:host=$dbHost;dbname=$dbName", $dbUser, $dbPass);
+        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    } catch (PDOException $e) {
+        exit( $e->getMessage() );
+    }
+
+    if(isset($_POST['submit']))
+    {
+
+        try {
+            $stmt = $conn->prepare('SELECT `email` FROM `users` WHERE email = ?');
+            $stmt->bindParam(1, $_POST['email']);
+            $stmt->execute();
+            while($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+
+            }
+        }
+        catch(PDOException $e) {
+            echo 'ERROR: ' . $e->getMessage();
+        }
+
+        if($stmt->rowCount() > 0){
+            echo "The record exists!";
+        } else {
+            echo "The record is non-existant.";
+        }
+
+
+    }
+    if(isset($_POST['submit']))
+    {
+
+        try {
+            $stmt = $conn->prepare('SELECT `username` FROM `users` WHERE username = ?');
+            $stmt->bindParam(1, $_POST['username']);
+            $stmt->execute();
+            while($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+
+            }
+        }
+        catch(PDOException $e) {
+            echo 'ERROR: ' . $e->getMessage();
+        }
+
+        if($stmt->rowCount() > 0){
+            echo "The record exists!";
+        } else {
+            echo "The record is non-existant.";
+        }
+
+
+    }
     exit;
 }
 
@@ -43,7 +96,59 @@ if ($_POST['type'] === 'register') {
      *
      *
      */
+    try {
+        $conn= new PDO("mysql:host=$dbHost;dbname=$dbName", $dbUser, $dbPass);
+        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    } catch (PDOException $e) {
+        exit( $e->getMessage() );
+    }
 
+    if(isset($_POST['submit']))
+    {
+
+        try {
+            $stmt = $conn->prepare('SELECT `email` FROM `users` WHERE email = ?');
+            $stmt->bindParam(1, $_POST['email']);
+            $stmt->execute();
+            while($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+
+            }
+        }
+        catch(PDOException $e) {
+            echo 'ERROR: ' . $e->getMessage();
+        }
+
+        if($stmt->rowCount() > 0){
+            echo "The record exists!";
+        } else {
+            echo "The record is non-existant.";
+        }
+
+
+    }
+    if(isset($_POST['submit']))
+    {
+
+        try {
+            $stmt = $conn->prepare('SELECT `username` FROM `users` WHERE username = ?');
+            $stmt->bindParam(1, $_POST['username']);
+            $stmt->execute();
+            while($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+
+            }
+        }
+        catch(PDOException $e) {
+            echo 'ERROR: ' . $e->getMessage();
+        }
+
+        if($stmt->rowCount() > 0){
+            echo "The record exists!";
+        } else {
+            echo "The record is non-existant.";
+        }
+
+
+    }
     exit;
 }
 
