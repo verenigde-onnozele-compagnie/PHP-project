@@ -2,10 +2,38 @@
     margin: 0;
     padding: 0;
 }
+
+body {
+    background-color: #f1f2eb;
+    font-family: Arial;
+}
+/* =====Header===== */
+nav {
+    background-color: #566246;
+    color: white;
+    margin-bottom: 1%;
+    padding: 1%;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+}
+
+ nav .login {
+     position: absolute;
+     top: 2%;
+     right: 1%;
+ }
+
+/* =====Banner===== */
 .banner {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     background-color: #a4c2a5;
+    max-width: 80%;
+    margin-left: 10%;
+    margin-bottom: 5%;
 }
 
 .banner-item {
@@ -13,17 +41,37 @@
     flex-direction: column;
     text-align: center;
     max-width: 50%;
+    height: 75%;
     border: 1px solid black;
     padding: 5%;
     margin: 5%;
 }
 
+.banner-item h2 {
+    margin-bottom: 10%;
+}
+
 .banner-item p {
     margin: 0;
-
 }
 
 .active .banner-item {
     box-shadow: 3px 3px black;
     padding: 5%;
+}
+
+/* =====Gallery===== */
+
+.gallery {
+    display: flex;
+    justify-content: space-evenly;
+    margin-bottom: 3%;
+}
+
+/* =====download===== */
+
+.download form input {
+    padding: 2% 5% 2% 5%;
+    background-color: #a4c2a5;
+    margin-left: 43%;
 }

@@ -5,17 +5,14 @@
 <!-- Even heel easy html code, omdat de focus nu op het inlogsysteem ligt en niet op fancy looks :)  -->
 <html>
 <head>
+    <link rel="stylesheet" href="style.css">
     <title>Amo Login System homepage</title>
-    <style>
-        nav {
-            display: flex;
-            justify-content: flex-end;
-        }
-    </style>
 </head>
 <body>
 <header>
     <nav>
+        <a href="#">Home</a>
+        <div class="login">
         <?php
         /*
          * Hier checken we of we al ooit eens een 'id' key hebben opgeslagen in de
@@ -32,5 +29,6 @@
             echo "<a href='login.php'>Login</a> &nbsp; or &nbsp; <a href='register.php'> register </a>";
         }
         ?>
+        </div>
     </nav>
 </header>
