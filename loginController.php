@@ -1,5 +1,5 @@
 <?php
-
+require 'config.php';
 /*
  * Dit is een webserver only script, waar je alleen mag komen als je via een form
  * data verstuurd, en niet als je via de url hier naar toe komt. Iedereen die dat doet

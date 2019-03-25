@@ -75,3 +75,11 @@ nav a {
     background-color: #a4c2a5;
     margin-left: 43%;
 }
+
+/* =====responsive===== */
+
+@media screen and (max-width: 800px){
+    .gallery {
+        display: none;
+    }
+}
