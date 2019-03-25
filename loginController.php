@@ -35,7 +35,7 @@ if ( $_POST['type'] === 'login' ) {
     {
 
         try {
-            $stmt = $conn->prepare('SELECT `email` FROM `users` WHERE email = ?');
+            $stmt = $conn->prepare('SELECT email FROM users WHERE email = ?');
             $stmt->bindParam(1, $_POST['email']);
             $stmt->execute();
             while($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
@@ -58,7 +58,7 @@ if ( $_POST['type'] === 'login' ) {
     {
 
         try {
-            $stmt = $conn->prepare('SELECT `username` FROM `users` WHERE username = ?');
+            $stmt = $conn->prepare('SELECT username FROM users WHERE username = ?');
             $stmt->bindParam(1, $_POST['username']);
             $stmt->execute();
             while($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
@@ -107,7 +107,7 @@ if ($_POST['type'] === 'register') {
     {
 
         try {
-            $stmt = $conn->prepare('SELECT `email` FROM `users` WHERE email = ?');
+            $stmt = $conn->prepare('SELECT email FROM users WHERE email = ?');
             $stmt->bindParam(1, $_POST['email']);
             $stmt->execute();
             while($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
@@ -130,7 +130,7 @@ if ($_POST['type'] === 'register') {
     {
 
         try {
-            $stmt = $conn->prepare('SELECT `username` FROM `users` WHERE username = ?');
+            $stmt = $conn->prepare('SELECT username FROM users WHERE username = ?');
             $stmt->bindParam(1, $_POST['username']);
             $stmt->execute();
             while($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
@@ -149,7 +149,21 @@ if ($_POST['type'] === 'register') {
 
 
     }
-    exit;
+
+    $username = $_POST['username'];
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+
+    $sql = "INSERT INTO users (  email,  username, password ) 
+        VALUES (  :email, :username, :password )";
+    $prepare = $db->prepare($sql);
+    $prepare->execute([
+        ':email'        => $email,
+        ':username'     => $username,
+        ':password'     => $password
+
+    ]);
+    header( 'Location: index.php');
 }
 
 
