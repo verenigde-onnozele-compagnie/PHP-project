@@ -70,10 +70,20 @@ nav a {
 
 /* =====download===== */
 
-.download form input {
+.download a {
+    border: 1px solid #566246;
+    box-shadow: 3px 3px black;
+    text-decoration: none;
+    color: black;
     padding: 2% 5% 2% 5%;
     background-color: #a4c2a5;
     margin-left: 43%;
+    margin-bottom: 10%;
+}
+
+.download a:hover {
+    transition: 2s;
+    box-shadow: none;
 }
 
 /* =====responsive===== */

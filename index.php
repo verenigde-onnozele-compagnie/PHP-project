@@ -29,9 +29,7 @@
         <img src="images/promoimage2.PNG" alt="Promotion image 2">
     </div>
     <div class="download">
-        <form action="download.php">
-            <input type="submit" value="Download" id="download">
-        </form>
+        <a href="downloads/gokkers.exe">Download</a>
     </div>
 </body>
 </html>
