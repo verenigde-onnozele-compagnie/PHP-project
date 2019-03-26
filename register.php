@@ -34,7 +34,8 @@ function validpassword($password)
         <label for="password_confirm">Please confirm your password</label>
         <input type="password" name="password_confirm" id="password_confirm">
     </div>
-    <input type="checkbox" value="algemene voorwaarden" name="checkbox">
+    <a href="terms.php">Agree to our terms of service</a>
+    <input type="checkbox" value="checked" name="checkbox">
     <input type="submit" value="Register">
 </form>
 
