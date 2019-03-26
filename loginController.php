@@ -168,12 +168,12 @@ if ($_POST['type'] === 'register') {
     $sql = "INSERT INTO users (  email,  username, password ) 
         VALUES (  :email, :username, :password )";
     $prepare = $db->prepare($sql);
+    $prepare->execute([
+        ':email'        => $email,
+        ':username'     => $username,
+        ':password'     => $passwordHash
 
-    
-    $stmt->bindValue(':username', $username);
-    $stmt->bindValue(':password', $passwordHash);
-
-    $result = $stmt->execute();
+    ]);
 
     header( 'Location: index.php');
 }
