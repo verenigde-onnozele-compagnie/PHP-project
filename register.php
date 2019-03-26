@@ -15,27 +15,27 @@ function validpassword($password)
     <input type="hidden" name="type" value="register">
     <div class="form-group">
         <label for="username">username</label>
-        <input type="text" name="username" id="username">
+        <input type="text" name="username" id="username" required>
     </div>
 
     <div class="form-group">
         <label for="email">email</label>
-        <input type="email" name="email" id="email">
+        <input type="email" name="email" id="email" required>
     </div>
 
     <div class="form-group">
         <label for="password">password</label>
-        <input type="password" name="password" id="password">
+        <input type="password" name="password" id="password" required>
         <?php
            ?>
     </div>
 
     <div class="form-group">
         <label for="password_confirm">Please confirm your password</label>
-        <input type="password" name="password_confirm" id="password_confirm">
+        <input type="password" name="password_confirm" id="password_confirm" required>
     </div>
     <a href="terms.php">Agree to our terms of service</a>
-    <input type="checkbox" value="checked" name="checkbox">
+    <input type="checkbox" value="checked" name="checkbox" required>
     <input type="submit" value="Register">
 </form>
 
