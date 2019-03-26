@@ -195,6 +195,12 @@ if ($_POST['type'] === 'register') {
 
     }
     if ($_POST['checkbox'] == 'checked') {
+
+        $username = preg_replace('/\s+/', '', $username);
+        $email = preg_replace('/\s+/', '', $email);
+        $password = preg_replace('/\s+/', '', $password);
+
+
         
         $username = $_POST['username'];
         $email = $_POST['email'];
