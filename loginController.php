@@ -194,51 +194,55 @@ if ($_POST['type'] === 'register') {
 
 
     }
+    if ($_POST['checkbox'] == 'checked') {
+        
+        $username = $_POST['username'];
+        $email = $_POST['email'];
+        $password = $_POST['password'];
+        $password_confirm = $_POST['password_confirm'];
 
-    $username = $_POST['username'];
-    $email = $_POST['email'];
-    $password = $_POST['password'];
-    $password_confirm = $_POST['password_confirm'];
-
-    if (trim($_POST['password']) == ''||  trim($_POST['password_confirm']) == '') {
-        echo('All fields are required!');
-    } else if ($_POST['password'] != $_POST['password_confirm']) {
-        echo('Passwords do not match!');
-    } else if ($_POST['password'] == $_POST['password_confirm']) {
-        $errors = array();
-        if (strlen($password) < 7 || strlen($password) > 16) {
-            $errors[] = "Password should be min 7 characters and max 16 characters";
-        }
-        if (!preg_match("/\d/", $password)) {
-            $errors[] = "Password should contain at least one digit";
-        }
-        if (!preg_match("/[A-Z]/", $password)) {
-            $errors[] = "Password should contain at least one Capital Letter";
-        }
-        if (!preg_match("/[a-z]/", $password)) {
-            $errors[] = "Password should contain at least one small Letter";
-        }
-
-        if ($errors) {
-            foreach ($errors as $error) {
-                echo $error . "\n";
+        if (trim($_POST['password']) == '' || trim($_POST['password_confirm']) == '') {
+            echo('All fields are required!');
+        } else if ($_POST['password'] != $_POST['password_confirm']) {
+            echo('Passwords do not match!');
+        } else if ($_POST['password'] == $_POST['password_confirm']) {
+            $errors = array();
+            if (strlen($password) < 7 || strlen($password) > 16) {
+                $errors[] = "Password should be min 7 characters and max 16 characters";
             }
-            die();
-        } else {
-            header('location: login.php');
-        }
-        $passwordHash = password_hash($password, PASSWORD_BCRYPT, array("cost" => 12));
+            if (!preg_match("/\d/", $password)) {
+                $errors[] = "Password should contain at least one digit";
+            }
+            if (!preg_match("/[A-Z]/", $password)) {
+                $errors[] = "Password should contain at least one Capital Letter";
+            }
+            if (!preg_match("/[a-z]/", $password)) {
+                $errors[] = "Password should contain at least one small Letter";
+            }
 
-        $sql = "INSERT INTO users (username, email, password) 
+            if ($errors) {
+                foreach ($errors as $error) {
+                    echo $error . "\n";
+                }
+                die();
+            } else {
+                header('location: login.php');
+            }
+            $passwordHash = password_hash($password, PASSWORD_BCRYPT, array("cost" => 12));
+
+            $sql = "INSERT INTO users (username, email, password) 
                      VALUES (:username, :email, :password)";
-        $prepare = $db->prepare($sql);
-        $prepare->execute([
-            ':email' => $email,
-            ':username' => $username,
-            ':password' => $passwordHash
-        ]);
+            $prepare = $db->prepare($sql);
+            $prepare->execute([
+                ':email' => $email,
+                ':username' => $username,
+                ':password' => $passwordHash
+            ]);
+            header('Location: index.php');
+        }
+
     }
-    header( 'Location: index.php');
+
 }
 
 
