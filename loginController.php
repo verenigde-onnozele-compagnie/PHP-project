@@ -200,7 +200,9 @@ if ($_POST['type'] === 'register') {
         $email = preg_replace('/\s+/', '', $email);
         $password = preg_replace('/\s+/', '', $password);
 
-
+        if(filter_var($email, FILTER_VALIDATE_EMAIL)){
+            echo "Valid email";
+        }
         
         $username = $_POST['username'];
         $email = $_POST['email'];
