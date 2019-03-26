@@ -5,6 +5,7 @@
  * Date: 26/03/2019
  * Time: 15:27
  */
+require 'header.php';
 
 session_start();
 session_destroy();
