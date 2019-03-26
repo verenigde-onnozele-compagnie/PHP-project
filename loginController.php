@@ -78,6 +78,48 @@ if ( $_POST['type'] === 'login' ) {
 
     }
 
+    //Retrieve the field values
+    $username = !empty($_POST['username']) ? trim($_POST['username']) : null;
+    $passwordAttempt = !empty($_POST['password']) ? trim($_POST['password']) : null;
+
+    //Retrieve the user account information for the given username.
+    $sql = "SELECT id, username, password FROM users WHERE username = :username";
+    $stmt = $db->prepare($sql);
+
+    //Bind value.
+    $stmt->bindValue(':username', $username);
+
+    //Execute.
+    $stmt->execute();
+
+    //Fetch row.
+    $user = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    //If $row is FALSE.
+    if($user === false){
+        //Could not find a user with that username.
+        die('Incorrect username / password combination!');
+    } else{
+        //Compare the passwords.
+        $validPassword = password_verify($passwordAttempt, $user['password']);
+
+        //If $validPassword is TRUE, the login has been successful.
+        if($validPassword){
+
+            //Provide the user with a login session.
+            $_SESSION['user_id'] = $user['id'];
+            $_SESSION['logged_in'] = time();
+
+            //Redirect to our protected page, which we called home.php
+            header('Location: index.php');
+            exit;
+
+        } else{
+            //$validPassword was FALSE. Passwords do not match.
+            die('Incorrect username / password combination!');
+        }
+    }
+
 }
 
 if ($_POST['type'] === 'register') {
@@ -151,7 +193,7 @@ if ($_POST['type'] === 'register') {
 
 
     }
-    
+
     $username = $_POST['username'];
     $email = $_POST['email'];
     $password = $_POST['password'];
