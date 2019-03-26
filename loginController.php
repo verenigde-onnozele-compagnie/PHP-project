@@ -151,29 +151,29 @@ if ($_POST['type'] === 'register') {
 
 
     }
-    if(trim($_POST['pass'])=='' || trim($_POST['pass2'])=='')
-    {
-        echo('All fields are required!');
-    }
-    else if($_POST['pass'] != $_POST['pass2'])
-    {
-        echo('Passwords do not match!');
-    }
-
+    
     $username = $_POST['username'];
     $email = $_POST['email'];
     $password = $_POST['password'];
-    $passwordHash = password_hash($password, PASSWORD_BCRYPT, array("cost" => 12));
 
-    $sql = "INSERT INTO users (  email,  username, password ) 
-        VALUES (  :email, :username, :password )";
-    $prepare = $db->prepare($sql);
-    $prepare->execute([
-        ':email'        => $email,
-        ':username'     => $username,
-        ':password'     => $passwordHash
 
-    ]);
+    if (trim($_POST['password']) == '' || trim($_POST['password_confirm']) == '') {
+        echo('All fields are required!');
+    } else if ($_POST['password'] != $_POST['password_confirm']) {
+        echo('Passwords do not match!');
+    } else if ($_POST['password'] == $_POST['password_confirm']) {
+        $passwordHash = password_hash($password, PASSWORD_BCRYPT, array("cost" => 12));
+
+        $sql = "INSERT INTO users (username, email, password) 
+                   VALUES (:username, :email, :password)";
+        $prepare = $db->prepare($sql);
+        $prepare->execute([
+            ':email' => $email,
+            ':username' => $username,
+            ':password' => $passwordHash
+        ]);
+
+    }
 
     header( 'Location: index.php');
 }
