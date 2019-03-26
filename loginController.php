@@ -196,9 +196,9 @@ if ($_POST['type'] === 'register') {
     }
     if ($_POST['checkbox'] == 'checked') {
 
-        $username = preg_replace('/\s+/', '', $username);
-        $email = preg_replace('/\s+/', '', $email);
-        $password = preg_replace('/\s+/', '', $password);
+        $username = preg_replace('/\s+/', '', $username = ['username']);
+        $email = preg_replace('/\s+/', '', $email = ['email']);
+        $password = preg_replace('/\s+/', '', $password = ['password']);
 
         if(filter_var($email, FILTER_VALIDATE_EMAIL)){
             echo "Valid email";
