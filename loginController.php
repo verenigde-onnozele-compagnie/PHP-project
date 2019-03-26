@@ -47,9 +47,9 @@ if ( $_POST['type'] === 'login' ) {
         }
 
         if($stmt->rowCount() > 0){
-            echo "The record exists!";
+            echo "The email exists!";
         } else {
-            echo "The record is non-existant.";
+            echo "The email doesnt exist.";
         }
 
 
@@ -70,9 +70,9 @@ if ( $_POST['type'] === 'login' ) {
         }
 
         if($stmt->rowCount() > 0){
-            echo "The record exists!";
+            echo "The username already exists!";
         } else {
-            echo "The record is non-existant.";
+            echo "The username doesnt exist.";
         }
 
 
@@ -119,10 +119,11 @@ if ($_POST['type'] === 'register') {
         }
 
         if($stmt->rowCount() > 0){
-            echo "The record exists!";
+            echo "The email exists!";
         } else {
-            echo "The record is non-existant.";
+            echo "The email doesnt exist.";
         }
+
 
 
     }
@@ -142,10 +143,11 @@ if ($_POST['type'] === 'register') {
         }
 
         if($stmt->rowCount() > 0){
-            echo "The record exists!";
+            echo "The username already exists!";
         } else {
-            echo "The record is non-existant.";
+            echo "The username doesnt exist.";
         }
+
 
 
     }
