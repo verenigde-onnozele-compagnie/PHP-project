@@ -108,7 +108,7 @@ if ( $_POST['type'] === 'login' ) {
         if($validPassword){
 
             //Provide the user with a login session.
-            $_SESSION['user_id'] = $user['id'];
+            $_SESSION['id'] = $user['id'];
             $_SESSION['logged_in'] = time();
 
             //Redirect to index.php
