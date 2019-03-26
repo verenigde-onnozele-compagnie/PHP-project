@@ -77,7 +77,7 @@ if ( $_POST['type'] === 'login' ) {
 
 
     }
-    exit;
+       password
 }
 
 if ($_POST['type'] === 'register') {
