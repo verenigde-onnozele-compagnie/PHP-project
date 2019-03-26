@@ -202,7 +202,9 @@ if ($_POST['type'] === 'register') {
 
         if(filter_var($email, FILTER_VALIDATE_EMAIL)){
             echo "Valid email";
-        }
+        }// Checks if email is valid
+        // From: stackoverflow
+        //By: Sony Mathew
         
         $username = $_POST['username'];
         $email = $_POST['email'];
