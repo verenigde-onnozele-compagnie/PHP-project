@@ -169,7 +169,7 @@ if ($_POST['type'] === 'register') {
         VALUES (  :email, :username, :password )";
     $prepare = $db->prepare($sql);
 
-    $stmt->bindValue(':email', $email);
+    
     $stmt->bindValue(':username', $username);
     $stmt->bindValue(':password', $passwordHash);
 
