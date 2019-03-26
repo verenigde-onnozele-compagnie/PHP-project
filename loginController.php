@@ -77,7 +77,7 @@ if ( $_POST['type'] === 'login' ) {
 
 
     }
-       password
+
 }
 
 if ($_POST['type'] === 'register') {
@@ -163,16 +163,18 @@ if ($_POST['type'] === 'register') {
     $username = $_POST['username'];
     $email = $_POST['email'];
     $password = $_POST['password'];
+    $passwordHash = password_hash($password, PASSWORD_BCRYPT, array("cost" => 12));
 
     $sql = "INSERT INTO users (  email,  username, password ) 
         VALUES (  :email, :username, :password )";
     $prepare = $db->prepare($sql);
-    $prepare->execute([
-        ':email'        => $email,
-        ':username'     => $username,
-        ':password'     => $password
 
-    ]);
+    $stmt->bindValue(':email', $email);
+    $stmt->bindValue(':username', $username);
+    $stmt->bindValue(':password', $passwordHash);
+
+    $result = $stmt->execute();
+
     header( 'Location: index.php');
 }
 
