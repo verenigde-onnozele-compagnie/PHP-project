@@ -86,20 +86,21 @@ if ( $_POST['type'] === 'login' ) {
     $sql = "SELECT id, username, password FROM users WHERE username = :username";
     $stmt = $db->prepare($sql);
 
-    //Bind value.
+    //Bind the value.
     $stmt->bindValue(':username', $username);
 
-    //Execute.
     $stmt->execute();
 
-    //Fetch row.
+    //Fetch the row.
     $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
     //If $row is FALSE.
     if($user === false){
+
         //Could not find a user with that username.
         die('Incorrect username / password combination!');
     } else{
+
         //Compare the passwords.
         $validPassword = password_verify($passwordAttempt, $user['password']);
 
@@ -110,7 +111,7 @@ if ( $_POST['type'] === 'login' ) {
             $_SESSION['user_id'] = $user['id'];
             $_SESSION['logged_in'] = time();
 
-            //Redirect to our protected page, which we called home.php
+            //Redirect to index.php
             header('Location: index.php');
             exit;
 
