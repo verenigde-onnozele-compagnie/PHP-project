@@ -12,7 +12,7 @@
 <body>
 <header>
     <nav>
-        <a href="#">Home</a>
+        <a href="index.php">Home</a>
         <div class="login">
         <?php
         /*
