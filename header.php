@@ -25,7 +25,7 @@
          *
          */
         if ( isset($_SESSION['id']) ) {
-            echo "You are currently logged in. Want to <a href='register.php'>logout?</a>";
+            echo "You are currently logged in. Want to <a href='index.php' <?php session_destroy(); ?> >logout?</a>";
         } else {
             echo "<a href='login.php'>Login</a> &nbsp; or &nbsp; <a href='register.php'> register </a>";
         }
