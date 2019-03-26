@@ -205,6 +205,10 @@ if ($_POST['type'] === 'register') {
     } else if ($_POST['password'] != $_POST['password_confirm']) {
         echo('Passwords do not match!');
     } else if ($_POST['password'] == $_POST['password_confirm']) {
+        if (!preg_match('/^(?=[a-z])(?=[A-Z])[a-zA-Z]{8,}$/', $password))
+        {
+            echo 'Password must be at least 8 characters long, must have at least 1 uppercase and lowercase letter and must have a special character.';
+        }
         $passwordHash = password_hash($password, PASSWORD_BCRYPT, array("cost" => 12));
 
         $sql = "INSERT INTO users (username, email, password) 
